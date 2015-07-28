@@ -28,3 +28,8 @@ proguard/
 
 #API Key
 app/src/main/res/values/apikey.xml
+
+# Android Studio
+*.iml
+.idea
+ #.idea/workspace.xml - remove # and delete .idea if it better suit your needs.
