@@ -1,0 +1,15 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/pfPrimary</item>
+
+        <!-- colorPrimaryDark is used for the status bar -->
+        <item name="colorPrimaryDark">@color/pfDarker</item>
+
+        <!-- colorAccent is used as the default value for colorControlActivated,
+         which is used to tint widgets -->
+        <item name="colorAccent">@color/pfDarker</item>
+    </style>
+
+</resources>

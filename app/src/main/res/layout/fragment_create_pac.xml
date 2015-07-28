@@ -1,0 +1,142 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="is.packetflagon.app.CreatePACFragment">
+<RelativeLayout android:layout_height="wrap_content" android:layout_width="fill_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/nameLabel"
+        android:id="@+id/nameLabel"
+        android:fontFamily="sans-serif-thin"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nameText"
+        android:layout_below="@+id/nameLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="12dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/descLabel"
+        android:id="@+id/descLabel"
+        android:fontFamily="sans-serif-thin"
+        android:layout_below="@+id/nameText"
+        android:layout_alignLeft="@+id/nameText"
+        android:layout_alignStart="@+id/nameText" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/descText"
+        android:layout_below="@+id/descLabel"
+        android:layout_alignLeft="@+id/descLabel"
+        android:layout_alignStart="@+id/descLabel"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="12dp"
+        android:lines="1"
+        android:layout_marginTop="12dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/passwordLabel"
+        android:id="@+id/passwordLabel"
+        android:fontFamily="sans-serif-thin"
+        android:layout_below="@+id/descText"
+        android:layout_alignLeft="@+id/descText"
+        android:layout_alignStart="@+id/descText" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/passwordText"
+        android:layout_below="@+id/passwordLabel"
+        android:layout_alignLeft="@+id/passwordLabel"
+        android:layout_alignStart="@+id/passwordLabel"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="12dp"
+        android:hint="@string/passwordHint" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/urlLabel"
+        android:id="@+id/urlListLabel"
+        android:fontFamily="sans-serif-thin"
+        android:layout_below="@+id/passwordText"
+        android:layout_alignLeft="@+id/passwordText"
+        android:layout_alignStart="@+id/passwordText"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="12dp" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/urlListText"
+        android:layout_below="@+id/urlListLabel"
+        android:layout_alignLeft="@+id/urlListLabel"
+        android:layout_alignStart="@+id/urlListLabel"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="12dp"
+        android:lines="2"
+        android:hint="@string/urlHint" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/localProxyLabel"
+        android:id="@+id/localRelaySwitch"
+        android:fontFamily="sans-serif-condensed"
+        android:layout_below="@+id/urlListText"
+        android:layout_alignRight="@+id/urlListText"
+        android:layout_alignEnd="@+id/urlListText" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create PAC"
+        android:id="@+id/createPACButton"
+        android:layout_alignParentBottom="false"
+        android:layout_alignRight="@+id/localRelaySwitch"
+        android:layout_alignEnd="@+id/localRelaySwitch"
+        android:layout_below="@+id/localRelaySwitch"
+        android:layout_marginTop="12dp" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentStart="false"
+        android:indeterminateOnly="true"
+        android:indeterminate="true"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</RelativeLayout>
+
+
+</ScrollView>

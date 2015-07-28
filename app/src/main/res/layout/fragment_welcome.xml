@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="is.packetflagon.app.WelcomeFragment"
+    android:padding="12dp"
+    android:background="@color/pfBackground1">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/ic_launcher"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="40dp" />
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="@string/welcome"
+        android:gravity="center_horizontal"
+        android:textSize="24dp"
+        android:fontFamily="sans-serif-light"
+        android:id="@+id/welcomeTitle"
+        android:layout_below="@+id/imageView"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/pfAccent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/welcome_1"
+        android:id="@+id/textView"
+        android:fontFamily="sans-serif-thin"
+        android:layout_below="@+id/welcomeTitle"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentStart="false"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/pfAccent"
+        android:layout_centerHorizontal="true" />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/welcome_2"
+        android:fontFamily="sans-serif-light"
+        android:id="@+id/welcomeMessage"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:autoLink="web" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_action_pac_add"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true" />
+</RelativeLayout>

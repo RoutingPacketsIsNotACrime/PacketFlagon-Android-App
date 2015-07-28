@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">PacketFlagon</string>
+
+    <string name="title_section1">Welcome</string>
+    <string name="title_section2">Create PAC</string>
+    <string name="title_section3">View Your PACs</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="navDrawerIntro">This platform enables those in the UK with censored Internet connections to bypass these filters by building customised PAC files to selectively route certain websites via uncensored proxies.
+\n\nThis service is provided for free and without adverts. </string>
+
+    <string name="action_example">Example action</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- Main Fragment -->
+    <string name="welcome">Welcome to PacketFlagon!</string>
+    <string name="welcome_1">Bypassing UK Internet Censorship</string>
+    <string name="welcome_2"><![CDATA[
+    You can add an existing PAC by tapping the button at the bottom or create a new PAC by tapping the top left.
+    <br/><br/><strong>Remember:</strong> Proxies can spy on your browsing traffic!
+    <br/><br/>Consider learning how to use Tor properly at https://torproject.org
+    ]]>
+    </string>
+
+    <!-- Create PAC -->
+    <string name="nameLabel">Friendly Name</string>
+    <string name="descLabel">PAC Description</string>
+    <string name="passwordLabel">PAC Password</string>
+    <string name="passwordHint">(Optional)</string>
+    <string name="urlLabel">URL List</string>
+    <string name="urlHint">e.g. reddit.com, google.com</string>
+    <string name="localProxyLabel">Use local proxy?</string>
+    <string name="pacSuccessToast">PAC successfully created; </string>
+    <string name="pacFailureToast">PAC creation failed. Response; </string>
+
+    <!-- Manage PAC -->
+    <string name="pushToS3">Push to S3</string>
+    <string name="pushToS3Success">S3 URL Added to Clipboard</string>
+    <string name="pushToS3Fail">S3 Push Failed. Response: </string>
+    <string name="descHolder">...</string>
+    <string name="getPACFail">Fetching PAC details failed. Response was; </string>
+
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

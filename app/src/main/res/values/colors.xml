@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="pfPrimary">#6CBFEE</color>
+    <color name="pfDarker">#3594CB</color>
+    <color name="pfAccent">#555</color>
+    <color name="pfWhite">#fff</color>
+    <color name="pfBackground1">#E9E6E1</color>
+</resources>
