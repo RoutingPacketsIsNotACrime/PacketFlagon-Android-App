@@ -1,6 +1,7 @@
 package is.packetflagon.app;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
@@ -27,7 +28,7 @@ public class WelcomeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-
+    private QuickAddPACListener mListener;
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -62,12 +63,39 @@ public class WelcomeFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_welcome, container, false);
-        Spanned htmlText = Html.fromHtml(getString(R.string.welcome_2));
 
+        View fab = rootView.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.QuickAddPAC();
+            }
+        });
+
+        Spanned htmlText = Html.fromHtml(getString(R.string.welcome_2));
         ((TextView) rootView.findViewById(R.id.welcomeMessage)).setText(htmlText);
 
         return rootView;
     }
 
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mListener = (QuickAddPACListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement QuickAddPACListener");
+        }
+    }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    public interface QuickAddPACListener {
+        public void QuickAddPAC();
+    }
 }

@@ -43,7 +43,17 @@
     <string name="descHolder">...</string>
     <string name="getPACFail">Fetching PAC details failed. Response was; </string>
 
+    <!-- Quick Add PAC -->
+    <string name="quickAddTitle">Add An Existing PAC</string>
+    <string name="quickAddDesc"><![CDATA[
+    Enter the 32 character ID of your PAC file to add it to the app for managing.<br/><br/>
+    The ID looks something like;<br/><br/>
+    <strong>b718ce9b276bc2f10af90fe1d5b33c0d</strong>
+    ]]>
+    </string>
+    <string name="quickAddPrompt">e.g b718ce9b276bc2f10af90</string>
+    <string name="quickAddButon">Add PAC</string>
+    <string name="quickAddSuccess">Successfully fetched the meta data for</string>
 
-<!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

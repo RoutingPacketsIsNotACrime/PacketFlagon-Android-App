@@ -1,6 +1,7 @@
 package is.packetflagon.app;
 
 import android.app.Activity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -20,7 +21,7 @@ import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks, PACListFragment.ManagePACListener {
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks, PACListFragment.ManagePACListener, WelcomeFragment.QuickAddPACListener {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -127,5 +128,17 @@ public class MainActivity extends ActionBarActivity
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void QuickAddPAC() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
+        ft.replace(R.id.container, QuickAddPacFragment.newInstance(), "fragment");
+        ft.commit();
+        /*fragmentManager.beginTransaction()
+                .replace(R.id.container, QuickAddPacFragment.newInstance())
+                .commit();*/
     }
 }
