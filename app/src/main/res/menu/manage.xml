@@ -5,4 +5,10 @@
     <item android:id="@+id/action_pushtos3" android:title="@string/pushToS3"
         android:icon="@drawable/ic_action_file_cloud_upload"
         app:showAsAction="withText|ifRoom" />
+    <item android:id="@+id/action_geturl" android:title="@string/getPACURL"
+        android:icon="@drawable/ic_action_content_link"
+        app:showAsAction="withText|ifRoom" />
+    <item android:id="@+id/action_share" android:title="@string/sharePACURL"
+        android:icon="@drawable/ic_action_social_share"
+        app:showAsAction="ifRoom" />
 </menu>

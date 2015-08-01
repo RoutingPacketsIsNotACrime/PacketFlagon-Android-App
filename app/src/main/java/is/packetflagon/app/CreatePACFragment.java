@@ -16,6 +16,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import is.packetflagon.app.cache.LocalCache;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -116,6 +118,19 @@ public class CreatePACFragment extends Fragment {
                         if(apiReturn.success)
                         {
                             Toast.makeText(getActivity(),getString(R.string.pacSuccessToast) + apiReturn.hash,Toast.LENGTH_SHORT).show();
+
+                            try {
+                                LocalCache lc = new LocalCache(getActivity());
+                                lc.open();
+                                lc.addPAC(apiReturn.hash, friendlyName.getText().toString());
+                                lc.close();
+                            }
+                            catch (Exception e)
+                            {
+                                e.printStackTrace();
+
+                            }
+
                             mListener.ManagePAC(apiReturn.hash);
                         }
                         else

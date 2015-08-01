@@ -1,5 +1,7 @@
 package is.packetflagon.app;
 
+import java.util.List;
+
 /**
  * Created by gareth on 15/07/15.
  */
@@ -15,5 +17,6 @@ public class APIReturn
     public boolean localProxy = false;
     public boolean passwordProtected = true;
     public String s3URL = "";
+    public List<BlockedURL> urls;
 
 }

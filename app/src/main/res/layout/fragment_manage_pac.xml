@@ -48,4 +48,31 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_margin="12dp" />
+
+
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView"
+        android:layout_below="@+id/descTV"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/fab" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/pacPassword"
+        android:hint="@string/pacPasswordHint"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginBottom="12dp"
+        android:layout_toLeftOf="@+id/fab"
+        android:layout_toStartOf="@+id/fab"
+        android:layout_marginRight="40dp" />
 </RelativeLayout>

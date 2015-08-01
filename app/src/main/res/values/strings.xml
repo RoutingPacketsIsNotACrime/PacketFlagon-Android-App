@@ -20,8 +20,8 @@
     <string name="welcome_1">Bypassing UK Internet Censorship</string>
     <string name="welcome_2"><![CDATA[
     You can add an existing PAC by tapping the button at the bottom or create a new PAC by tapping the top left.
-    <br/><br/><strong>Remember:</strong> Proxies can spy on your browsing traffic!
-    <br/><br/>Consider learning how to use Tor properly at https://torproject.org
+    <br/><br/><strong>Remember:</strong> Proxies <em>could</em> be used to spy on your browsing traffic!
+    <br/><br/>Consider learning how to use Tor securely instead; https://torproject.org
     ]]>
     </string>
 
@@ -38,10 +38,20 @@
 
     <!-- Manage PAC -->
     <string name="pushToS3">Push to S3</string>
+    <string name="getPACURL">Get PAC URL</string>
     <string name="pushToS3Success">S3 URL Added to Clipboard</string>
     <string name="pushToS3Fail">S3 Push Failed. Response: </string>
     <string name="descHolder">...</string>
     <string name="getPACFail">Fetching PAC details failed. Response was; </string>
+    <string name="getPACURLToast">The PAC URL has been added to your copy + paste clipboard</string>
+    <string name="sharePACURL">Share PAC</string>
+    <string name="pacPasswordHint">Password to edit PAC</string>
+    <string name="removeURLTitle">Remove URL From PAC?</string>
+    <string name="removeURLMessage">Do you wish to remove this URL from the PAC file?</string>
+    <string name="removeURLOK">Remove URL</string>
+    <string name="removeURLCancel">No, Keep URL</string>
+    <string name="removeURLSuccess">URL Removed From PAC\n\nYour Browser cache may take some time to see this change</string>
+    <string name="removeURLFail">Failed to remove the URL from the PAC; </string>
 
     <!-- Quick Add PAC -->
     <string name="quickAddTitle">Add An Existing PAC</string>

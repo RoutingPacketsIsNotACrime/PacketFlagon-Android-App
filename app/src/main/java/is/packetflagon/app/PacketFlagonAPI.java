@@ -8,6 +8,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -89,8 +90,29 @@ public class PacketFlagonAPI
     }
 
 
+    public APIReturn RemoveURL(String hash, String url, String password)
+    {
+        Log.e("Remove","hash: " + hash + " password: " + password + " url: " + url);
 
+        List<NameValuePair> payload = new ArrayList<NameValuePair>();
+        payload.add(new BasicNameValuePair("hash", hash));
+        payload.add(new BasicNameValuePair("password", md5(password)));
+        payload.add(new BasicNameValuePair("url", url));
+        payload.add(new BasicNameValuePair("auth", md5(APIKey + url)));
 
+        return makeRequest(payload,"remove_url_from_pac");
+    }
+
+    public APIReturn AddURL(String hash, String url, String password)
+    {
+        List<NameValuePair> payload = new ArrayList<NameValuePair>();
+        payload.add(new BasicNameValuePair("hash", hash));
+        payload.add(new BasicNameValuePair("password", md5(password)));
+        payload.add(new BasicNameValuePair("url", url));
+        payload.add(new BasicNameValuePair("auth", md5(APIKey + url)));
+
+        return makeRequest(payload,"add_url_to_pac");
+    }
 
     private APIReturn makeRequest(List<NameValuePair> payload, String purpose)
     {
@@ -172,6 +194,20 @@ public class PacketFlagonAPI
             if(jsonResponse.has("url"))
                 apiReturn.s3URL = jsonResponse.getString("url");
 
+            if(jsonResponse.has("urls"))
+            {
+                List<BlockedURL> urlList = new ArrayList<BlockedURL>();
+                List<Boolean> blockedList = new ArrayList<Boolean>();
+
+                JSONArray urls = jsonResponse.getJSONArray("urls");
+
+                for (int i = 0; i < urls.length(); i++)
+                {
+                    urlList.add(new BlockedURL(((JSONObject) urls.get(i)).getString("url"), ((JSONObject) urls.get(i)).getBoolean("blocked")));
+                }
+                apiReturn.urls = urlList;
+
+            }
 
             if(jsonResponse.has("localproxy")) {
                 try {
@@ -285,7 +321,7 @@ public class PacketFlagonAPI
             result.append("=");
             result.append(URLEncoder.encode(pair.getValue(), "UTF-8"));
         }
-
+        Log.e("getQuery",result.toString());
         return result.toString();
     }
 }
