@@ -14,6 +14,10 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 
+import java.util.List;
+
+import is.packetflagon.app.adapters.PACListAdapter;
+import is.packetflagon.app.cache.LocalCache;
 import is.packetflagon.app.dummy.DummyContent;
 
 /**
@@ -47,7 +51,7 @@ public class PACListFragment extends Fragment implements AbsListView.OnItemClick
      * The Adapter which will be used to populate the ListView/GridView with
      * Views.
      */
-    private ListAdapter mAdapter;
+    private PACListAdapter mAdapter;
 
     // TODO: Rename and change types of parameters
     public static PACListFragment newInstance(String param1, String param2) {
@@ -76,8 +80,10 @@ public class PACListFragment extends Fragment implements AbsListView.OnItemClick
         }
 
         // TODO: Change Adapter to display your content
-        mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
+        /*mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
+                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);*/
+        mAdapter = new PACListAdapter(getActivity());
+
     }
 
     @Override
@@ -117,7 +123,7 @@ public class PACListFragment extends Fragment implements AbsListView.OnItemClick
         if (null != mListener) {
             // Notify the active callbacks interface (the activity, if the
             // fragment is attached to one) that an item has been selected.
-            mListener.ManagePAC(DummyContent.ITEMS.get(position).id);
+            mListener.ManagePAC(mAdapter.getPACHash(position));
         }
     }
 

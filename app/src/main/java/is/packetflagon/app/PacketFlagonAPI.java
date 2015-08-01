@@ -68,7 +68,7 @@ public class PacketFlagonAPI
 
     public APIReturn GetPacDetails(String hash)
     {
-        PAC pac = new PAC();
+        //PAC pac = new PAC();
 
         List<NameValuePair> payload = new ArrayList<NameValuePair>();
         payload.add(new BasicNameValuePair("hash", hash));
@@ -79,7 +79,7 @@ public class PacketFlagonAPI
 
     public APIReturn PushToS3(String hash)
     {
-        PAC pac = new PAC();
+        //PAC pac = new PAC();
 
         List<NameValuePair> payload = new ArrayList<NameValuePair>();
         payload.add(new BasicNameValuePair("hash", hash));
