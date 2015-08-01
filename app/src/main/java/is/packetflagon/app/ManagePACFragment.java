@@ -7,6 +7,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -47,6 +49,8 @@ public class ManagePACFragment extends Fragment implements AbsListView.OnItemCli
     private AbsListView mListView;
     private URLListAdapter mAdapter;
     private EditText password;
+    private FloatingActionButton fab;
+
     /**
      * @param hash The PAC hash
      * @return A new instance of fragment ManagePACFragment.
@@ -84,12 +88,20 @@ public class ManagePACFragment extends Fragment implements AbsListView.OnItemCli
         pacDescTextView = (TextView) rootView.findViewById(R.id.descTV);
         pacPasswordProtectImageView = (ImageView) rootView.findViewById(R.id.lockedIV);
         password = (EditText) rootView.findViewById(R.id.pacPassword);
-
+        fab = (FloatingActionButton) rootView.findViewById(R.id.fab);
         mListView = (AbsListView) rootView.findViewById(R.id.listView);
 
 
         // Set OnItemClickListener so we can be notified on item clicks
         mListView.setOnItemClickListener(this);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogFragment dialog = new AddURLDialog();
+                dialog.show(getActivity().getSupportFragmentManager(), "AddURL");
+            }
+        });
 
         return rootView;
     }
@@ -116,6 +128,46 @@ public class ManagePACFragment extends Fragment implements AbsListView.OnItemCli
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
+
+    public void AddURL(final String URL)
+    {
+        progressBar.setVisibility(View.VISIBLE);
+
+        new AsyncTask<String, Void, APIReturn>() {
+            @Override
+            protected APIReturn doInBackground(String... params)
+            {
+                try {
+                    PacketFlagonAPI api = new PacketFlagonAPI(getString(R.string.apikey));
+                    try {
+                        return api.AddURL(pacHash,params[0], password.getText().toString());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        return null;
+                    }
+                } catch (Exception e) {
+                    return null;
+                }
+            }
+
+            @Override
+            protected void onPostExecute(APIReturn pac)
+            {
+                if(pac.success) {
+                    Toast.makeText(getActivity(),getString(R.string.addURLSuccess),Toast.LENGTH_SHORT).show();
+                    mAdapter.addURL(URL);
+                }
+                else
+                {
+                    Toast.makeText(getActivity(),getString(R.string.addURLFail) + " " + pac.message,Toast.LENGTH_LONG).show();
+                }
+
+                progressBar.setVisibility(View.GONE);
+            }
+        }.execute(URL, null, null);
+    }
+
 
     private void RemoveURL(final int position)
     {

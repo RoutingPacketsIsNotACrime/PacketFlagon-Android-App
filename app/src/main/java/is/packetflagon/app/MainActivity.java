@@ -21,7 +21,7 @@ import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks, PACListFragment.ManagePACListener, WelcomeFragment.QuickAddPACListener {
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks, PACListFragment.ManagePACListener, WelcomeFragment.QuickAddPACListener, AddURLDialog.AddURLFragmentListener {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -140,5 +140,11 @@ public class MainActivity extends ActionBarActivity
         /*fragmentManager.beginTransaction()
                 .replace(R.id.container, QuickAddPacFragment.newInstance())
                 .commit();*/
+    }
+
+    @Override
+    public void AddURL(String url) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        ((ManagePACFragment) fragmentManager.findFragmentById(R.id.container)).AddURL(url);
     }
 }

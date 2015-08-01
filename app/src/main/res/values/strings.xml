@@ -53,6 +53,15 @@
     <string name="removeURLSuccess">URL Removed From PAC\n\nYour Browser cache may take some time to see this change</string>
     <string name="removeURLFail">Failed to remove the URL from the PAC; </string>
 
+    <string name="addURLTitle">Add URL to PAC?</string>
+    <string name="addURLMessage"><![CDATA[
+    Add your URL <em>without</em> the http:// part.\n\n<br/><br/>e.g. just <strong>google.com</strong>
+    ]]></string>
+    <string name="addURLOK">Add URL</string>
+    <string name="addURLCancel">Cancel</string>
+    <string name="addURLSuccess">URL Added To PAC\n\nYour Browser cache may take some time to see this change</string>
+    <string name="addURLFail">Failed to add the URL to the PAC; </string>
+
     <!-- Quick Add PAC -->
     <string name="quickAddTitle">Add An Existing PAC</string>
     <string name="quickAddDesc"><![CDATA[

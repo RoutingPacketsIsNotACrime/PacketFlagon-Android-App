@@ -108,7 +108,7 @@ public class PacketFlagonAPI
         List<NameValuePair> payload = new ArrayList<NameValuePair>();
         payload.add(new BasicNameValuePair("hash", hash));
         payload.add(new BasicNameValuePair("password", md5(password)));
-        payload.add(new BasicNameValuePair("url", url));
+        payload.add(new BasicNameValuePair("urls", url));
         payload.add(new BasicNameValuePair("auth", md5(APIKey + url)));
 
         return makeRequest(payload,"add_url_to_pac");
@@ -263,8 +263,9 @@ public class PacketFlagonAPI
         catch (IOException e)
         {
             e.printStackTrace();
+            Log.e("Stackstrack",e.getMessage());
             apiReturn.success = false;
-            apiReturn.message = "There was a general IO error processng the response from the API";
+            apiReturn.message = "There was a general IO error processing the response from the API";
         }
         catch (JSONException e)
         {
