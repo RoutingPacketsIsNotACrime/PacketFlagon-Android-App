@@ -65,12 +65,12 @@
     <!-- Quick Add PAC -->
     <string name="quickAddTitle">Add An Existing PAC</string>
     <string name="quickAddDesc"><![CDATA[
-    Enter the 32 character ID of your PAC file to add it to the app for managing.<br/><br/>
-    The ID looks something like;<br/><br/>
+    Enter the 32 character ID of your PAC file to add it to the app<br/><br/>
+    A PAC ID looks something like;<br/><br/>
     <strong>b718ce9b276bc2f10af90fe1d5b33c0d</strong>
     ]]>
     </string>
-    <string name="quickAddPrompt">e.g b718ce9b276bc2f10af90</string>
+    <string name="quickAddPrompt"></string>
     <string name="quickAddButon">Add PAC</string>
     <string name="quickAddSuccess">Successfully fetched the meta data for</string>
 

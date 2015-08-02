@@ -50,23 +50,34 @@ public class MainActivity extends ActionBarActivity
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
+
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
+
+
+
         if(position == 0)
         {
-            fragmentManager.beginTransaction()
+            /*fragmentManager.beginTransaction()
                     .replace(R.id.container, WelcomeFragment.newInstance())
-                    .commit();
+                    .commit();*/
+            ft.replace(R.id.container, WelcomeFragment.newInstance(), "fragment");
         }
         else if(position == 1)
         {
-            fragmentManager.beginTransaction()
+            /*fragmentManager.beginTransaction()
                     .replace(R.id.container, CreatePACFragment.newInstance(""))
-                    .commit();
+                    .commit();*/
+            ft.replace(R.id.container, CreatePACFragment.newInstance(""), "fragment");
         }
         else {
-            fragmentManager.beginTransaction()
+            /*fragmentManager.beginTransaction()
                     .replace(R.id.container, PACListFragment.newInstance("",""))
-                    .commit();
+                    .commit();*/
+            ft.replace(R.id.container, PACListFragment.newInstance("",""), "fragment");
         }
+
+        ft.commit();
     }
 
     public void onSectionAttached(int number) {
@@ -113,9 +124,9 @@ public class MainActivity extends ActionBarActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        /*if (id == R.id.action_settings) {
             return true;
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
     }
