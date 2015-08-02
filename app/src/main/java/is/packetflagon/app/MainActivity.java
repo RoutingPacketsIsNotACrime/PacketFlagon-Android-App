@@ -1,23 +1,13 @@
 package is.packetflagon.app;
 
-import android.app.Activity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity
@@ -69,7 +59,7 @@ public class MainActivity extends ActionBarActivity
         else if(position == 1)
         {
             fragmentManager.beginTransaction()
-                    .replace(R.id.container, CreatePACFragment.newInstance("",""))
+                    .replace(R.id.container, CreatePACFragment.newInstance(""))
                     .commit();
         }
         else {
@@ -137,9 +127,6 @@ public class MainActivity extends ActionBarActivity
         ft.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
         ft.replace(R.id.container, QuickAddPacFragment.newInstance(), "fragment");
         ft.commit();
-        /*fragmentManager.beginTransaction()
-                .replace(R.id.container, QuickAddPacFragment.newInstance())
-                .commit();*/
     }
 
     @Override

@@ -2,12 +2,9 @@ package is.packetflagon.app;
 
 
 import android.app.Activity;
-import android.content.ClipData;
-import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.ClipboardManager;
 import android.text.Html;
 import android.text.Spanned;
 import android.view.LayoutInflater;
@@ -39,7 +36,6 @@ public class QuickAddPacFragment extends Fragment {
      *
      * @return A new instance of fragment QuickAddPacFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static QuickAddPacFragment newInstance() {
         QuickAddPacFragment fragment = new QuickAddPacFragment();
         Bundle args = new Bundle();

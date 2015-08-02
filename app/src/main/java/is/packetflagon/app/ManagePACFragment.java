@@ -1,7 +1,6 @@
 package is.packetflagon.app;
 
 
-import android.content.ClipData;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,11 +9,9 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
 import android.text.ClipboardManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -26,7 +23,6 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -154,13 +150,17 @@ public class ManagePACFragment extends Fragment implements AbsListView.OnItemCli
             @Override
             protected void onPostExecute(APIReturn pac)
             {
-                if(pac.success) {
-                    Toast.makeText(getActivity(),getString(R.string.addURLSuccess),Toast.LENGTH_SHORT).show();
-                    mAdapter.addURL(URL);
+                if(null != pac) {
+                    if (pac.success) {
+                        Toast.makeText(getActivity(), getString(R.string.addURLSuccess), Toast.LENGTH_SHORT).show();
+                        mAdapter.addURL(URL);
+                    } else {
+                        Toast.makeText(getActivity(), getString(R.string.addURLFail) + " " + pac.message, Toast.LENGTH_LONG).show();
+                    }
                 }
                 else
                 {
-                    Toast.makeText(getActivity(),getString(R.string.addURLFail) + " " + pac.message,Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), getString(R.string.addURLFail), Toast.LENGTH_LONG).show();
                 }
 
                 progressBar.setVisibility(View.GONE);
@@ -194,13 +194,15 @@ public class ManagePACFragment extends Fragment implements AbsListView.OnItemCli
             @Override
             protected void onPostExecute(APIReturn pac)
             {
-                if(pac.success) {
-                    Toast.makeText(getActivity(),getString(R.string.removeURLSuccess),Toast.LENGTH_SHORT).show();
-                    mAdapter.removeURL(position);
-                }
-                else
-                {
-                    Toast.makeText(getActivity(),getString(R.string.removeURLFail) + " " + pac.message,Toast.LENGTH_LONG).show();
+                if(null != pac) {
+                    if (pac.success) {
+                        Toast.makeText(getActivity(), getString(R.string.removeURLSuccess), Toast.LENGTH_SHORT).show();
+                        mAdapter.removeURL(position);
+                    } else {
+                        Toast.makeText(getActivity(), getString(R.string.removeURLFail) + " " + pac.message, Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(getActivity(), getString(R.string.removeURLFail), Toast.LENGTH_LONG).show();
                 }
 
                 progressBar.setVisibility(View.GONE);
@@ -232,25 +234,27 @@ public class ManagePACFragment extends Fragment implements AbsListView.OnItemCli
             @Override
             protected void onPostExecute(APIReturn pac)
             {
-                if(pac.success) {
-                    pacNameTextView.setText(pac.friendlyName);
-                    pacDescTextView.setText(pac.description);
+                if(null != pac) {
+                    if (pac.success) {
+                        pacNameTextView.setText(pac.friendlyName);
+                        pacDescTextView.setText(pac.description);
 
-                    if (pac.passwordProtected) {
-                        pacPasswordProtectImageView.setImageResource(R.drawable.ic_action_lock_outline);
+                        if (pac.passwordProtected) {
+                            pacPasswordProtectImageView.setImageResource(R.drawable.ic_action_lock_outline);
+                        } else {
+                            pacPasswordProtectImageView.setImageResource(R.drawable.ic_action_lock_open);
+                        }
+
+                        mAdapter = new URLListAdapter(pac.urls, getActivity());
+                        //List stuff
+                        ((AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);
                     } else {
-                        pacPasswordProtectImageView.setImageResource(R.drawable.ic_action_lock_open);
+                        pacNameTextView.setText(pacHash);
+                        pacDescTextView.setText("...");
+                        Toast.makeText(getActivity(), getString(R.string.getPACFail) + " " + pac.message, Toast.LENGTH_LONG).show();
                     }
-
-                    mAdapter = new URLListAdapter(pac.urls,getActivity());
-                    //List stuff
-                    ((AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);
-                }
-                else
-                {
-                    pacNameTextView.setText(pacHash);
-                    pacDescTextView.setText("...");
-                    Toast.makeText(getActivity(),getString(R.string.getPACFail) + " " + pac.message,Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getActivity(), getString(R.string.getPACFail), Toast.LENGTH_LONG).show();
                 }
 
                 progressBar.setVisibility(View.GONE);
@@ -260,7 +264,6 @@ public class ManagePACFragment extends Fragment implements AbsListView.OnItemCli
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        // TODO Auto-generated method stub
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.manage, menu);
     }
@@ -293,16 +296,18 @@ public class ManagePACFragment extends Fragment implements AbsListView.OnItemCli
                     @Override
                     protected void onPostExecute(APIReturn pac)
                     {
-                        if(pac.success) {
-                            Toast.makeText(getActivity(), getString(R.string.pushToS3Success), Toast.LENGTH_SHORT).show();
+                        if(null != pac) {
+                            if (pac.success) {
+                                Toast.makeText(getActivity(), getString(R.string.pushToS3Success), Toast.LENGTH_SHORT).show();
 
-                            ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
-                            //ClipData clip = ClipData.newPlainText("S3 PAC URL",pac.s3URL);
-                            clipboard.setText(pac.s3URL);
-                        }
-                        else
-                        {
-                            Toast.makeText(getActivity(), getString(R.string.pushToS3Fail) + " " + pac.message, Toast.LENGTH_SHORT).show();
+                                ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+                                //ClipData clip = ClipData.newPlainText("S3 PAC URL",pac.s3URL);
+                                clipboard.setText(pac.s3URL);
+                            } else {
+                                Toast.makeText(getActivity(), getString(R.string.pushToS3Fail) + " " + pac.message, Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(getActivity(), getString(R.string.pushToS3Fail), Toast.LENGTH_SHORT).show();
                         }
 
                         progressBar.setVisibility(View.GONE);
@@ -311,6 +316,8 @@ public class ManagePACFragment extends Fragment implements AbsListView.OnItemCli
 
                 return true;
             }
+
+            //Adds the URL for the PAC to the users clipboard
             case R.id.action_geturl: {
                 Toast.makeText(getActivity(), getString(R.string.getPACURLToast), Toast.LENGTH_SHORT).show();
 
@@ -320,6 +327,7 @@ public class ManagePACFragment extends Fragment implements AbsListView.OnItemCli
                 return true;
             }
 
+            //Share a PAC URL
             case R.id.action_share: {
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);

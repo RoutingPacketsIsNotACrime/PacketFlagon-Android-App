@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
@@ -17,8 +16,6 @@ import android.widget.TextView;
 import java.util.List;
 
 import is.packetflagon.app.adapters.PACListAdapter;
-import is.packetflagon.app.cache.LocalCache;
-import is.packetflagon.app.dummy.DummyContent;
 
 /**
  * A fragment representing a list of Items.
@@ -79,9 +76,6 @@ public class PACListFragment extends Fragment implements AbsListView.OnItemClick
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        // TODO: Change Adapter to display your content
-        /*mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);*/
         mAdapter = new PACListAdapter(getActivity());
 
     }

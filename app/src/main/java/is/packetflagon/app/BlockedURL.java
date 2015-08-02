@@ -1,7 +1,8 @@
 package is.packetflagon.app;
 
 /**
- * Created by gareth on 01/08/15.
+ * Very simple little class to describe a URL that is returned from the
+ * get_pac API request
  */
 public class BlockedURL {
     public String url;

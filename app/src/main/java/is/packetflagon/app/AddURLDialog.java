@@ -20,7 +20,7 @@ import android.widget.TextView;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link AddURLDialog.OnFragmentInteractionListener} interface
+ * {@link AddURLDialog.AddURLFragmentListener} interface
  * to handle interaction events.
  * Use the {@link AddURLDialog#newInstance} factory method to
  * create an instance of this fragment.
@@ -53,7 +53,6 @@ public class AddURLDialog extends DialogFragment
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        // Get the layout inflater
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
         dialogView = inflater.inflate(R.layout.fragment_add_url_dialog,null);
@@ -62,14 +61,13 @@ public class AddURLDialog extends DialogFragment
         ((TextView) dialogView.findViewById(R.id.addURLMessage)).setText(htmlText);
         builder.setTitle(getString(R.string.addURLTitle));
         builder.setView(dialogView)
-            // Add action buttons
             .setPositiveButton(R.string.addURLOK, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int id) {
                     mListener.AddURL(((EditText) getDialog().findViewById(R.id.newURL)).getText().toString());
                 }
             })
-            .setNegativeButton(R.string.addURLCancel, new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.addURLCancel, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                 }
             });
@@ -91,7 +89,6 @@ public class AddURLDialog extends DialogFragment
         return inflater.inflate(R.layout.fragment_add_url_dialog, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -115,18 +112,7 @@ public class AddURLDialog extends DialogFragment
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface AddURLFragmentListener {
-        // TODO: Update argument type and name
         public void AddURL(String url);
     }
 

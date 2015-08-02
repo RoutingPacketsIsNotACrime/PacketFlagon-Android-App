@@ -3,7 +3,9 @@ package is.packetflagon.app;
 import java.util.List;
 
 /**
- * Created by gareth on 15/07/15.
+ * A very simple class for describing what the PacketFlagon API returns
+ *
+ * TODO: constructor that takes in the JSON object and populates everything
  */
 public class APIReturn
 {
